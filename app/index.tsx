@@ -1,4 +1,6 @@
-import CustomInput from '@/components/CustomInput'
+
+import InputCustomUserName from '@/components/InputCustomUserName'
+import InputCustomUserPassword from '@/components/InputCustomUserPassword'
 import { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity, TextInputComponent } from 'react-native'
 
@@ -11,7 +13,6 @@ export default function HomeScreen() {
         console.log('userPassword', userPassword)
     }
 
-
     useEffect(() => {
         const isUserNameValid = userName.length >= 4
         const isPasswordValid = userPassword.length >= 4
@@ -21,14 +22,16 @@ export default function HomeScreen() {
     return (
         <View>
             <Text> Tela de Login</Text>
-            <CustomInput
+            <InputCustomUserName
                 placeholder='Digite seu usuário'
                 value={userName}
+                minLenght={4}
                 setValue={setUserName}
             />
-            <CustomInput
+            <InputCustomUserPassword
                 placeholder='Digite sua senha'
                 value={userPassword}
+                minLenght={4}
                 setValue={setPassword}
             />
             <TouchableOpacity onPress={register} disabled={!isValid}>
