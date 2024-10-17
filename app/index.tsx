@@ -2,15 +2,16 @@
 import InputCustomUserName from '@/components/InputCustomUserName'
 import InputCustomUserPassword from '@/components/InputCustomUserPassword'
 import { useEffect, useState } from 'react'
-import { View, Text, TouchableOpacity, TextInputComponent } from 'react-native'
+import { router } from 'expo-router'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 export default function HomeScreen() {
     const [userName, setUserName] = useState('')
     const [userPassword, setPassword] = useState('')
     const [isValid, setIsValid] = useState(false)
+
     const register = () => {
-        console.log('userName', userName)
-        console.log('userPassword', userPassword)
+        router.replace('/Home/home')
     }
 
     useEffect(() => {
@@ -21,7 +22,7 @@ export default function HomeScreen() {
 
     return (
         <View>
-            <Text> Tela de Login</Text>
+            <Text style={styles.titleText}> Tela de Login</Text>
             <InputCustomUserName
                 placeholder='Digite seu usuário'
                 value={userName}
@@ -34,9 +35,26 @@ export default function HomeScreen() {
                 minLenght={4}
                 setValue={setPassword}
             />
-            <TouchableOpacity onPress={register} disabled={!isValid}>
+            <TouchableOpacity onPress={register} disabled={!isValid} style={styles.button}>
                 <Text>Cadastrar</Text>
             </TouchableOpacity>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    titleText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    button: {
+        width: 200,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: 'green',
+    },
+});

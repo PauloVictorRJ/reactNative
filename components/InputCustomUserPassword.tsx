@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TextInput, Text, View, TouchableOpacity } from "react-native";
+import { TextInput, Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function InputCustomUserPassword({ placeholder, value, setValue, minLenght }) {
@@ -19,7 +19,7 @@ export default function InputCustomUserPassword({ placeholder, value, setValue, 
                     value={value}
                     onChangeText={setValue}
                     secureTextEntry={!isPasswordVisible}
-                    style={{ flex: 1 }}
+                    style={styles.input}
                 />
                 <TouchableOpacity onPress={() => setIsPasswordVisible(!isPasswordVisible)}>
                     <Icon
@@ -37,3 +37,12 @@ export default function InputCustomUserPassword({ placeholder, value, setValue, 
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+    },
+});

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TextInput, Text } from "react-native";
+import { TextInput, Text, StyleSheet } from "react-native";
 
 export default function InputCustomUserName({ placeholder, value, setValue, minLenght }) {
     const [isValid, setIsValid] = useState(false)
@@ -14,6 +14,7 @@ export default function InputCustomUserName({ placeholder, value, setValue, minL
                 placeholder={placeholder}
                 value={value}
                 onChangeText={setValue}
+                style={styles.input}
             />
             {
                 !isValid && (
@@ -23,3 +24,12 @@ export default function InputCustomUserName({ placeholder, value, setValue, minL
         </>
     )
 }
+
+const styles = StyleSheet.create({
+    input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+    },
+});
